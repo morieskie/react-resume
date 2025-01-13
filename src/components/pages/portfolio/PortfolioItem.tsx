@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { SyntheticEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import DirectionAwareHoverAnchor from "../../components/DirectionAwareHoverAnchor";
+import DirectionAwareHoverAnchor from "../../DirectionAwareHoverAnchor";
 import { IPortfoliItem } from "./IPortfolioItem";
 
 const PortfolioItem = ({

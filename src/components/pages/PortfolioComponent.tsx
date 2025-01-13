@@ -10,8 +10,15 @@ import {
 } from "react";
 import { AnimatePresence } from "motion/react";
 import axios from "axios";
-import { selectAllPortfolioItems } from "../../store/selectors/portfolioSelectors";
-import { loadPortfolios } from "../../store/slices/portfolioSlice";
+import {
+  selectPortfolioActiveCategory,
+  selectPortfolioCategories,
+  selectPortfolioProjects,
+} from "../../store/selectors/portfolioSelectors";
+import {
+  loadPortfolios,
+  setActiveCategory,
+} from "../../store/slices/portfolioSlice";
 import { AppDispatch } from "../../store";
 import { IPortfoliItem } from "./portfolio/IPortfolioItem";
 import PortfolioItem from "./portfolio/PortfolioItem";
@@ -24,32 +31,22 @@ const PortfolioComponent = () => {
   // );
   const dispatch = useDispatch<AppDispatch>();
 
-  const items = useSelector(selectAllPortfolioItems);
-  const [filteredItems, setFilteredtems] = useState<IPortfoliItem[]>(items);
-  const [categories, setCategories] = useState<string[]>([]);
+  const items = useSelector(selectPortfolioProjects);
+  const categories = useSelector(selectPortfolioCategories);
+  const activeCategory = useSelector(selectPortfolioActiveCategory);
   const [gridHeight, setGridHeight] = useState("auto");
   const gridContainer = useRef(null);
-  useEffect(() => {
-    axios
-      .get<any>(`${apiUrl}/data/portfolio.json`)
-      .then(({ data }) => dispatch(loadPortfolios(data)));
-  }, []);
 
   useEffect(() => {
-    let arr: string[] = [];
-    items.forEach((i) => (arr = [...new Set([...arr, ...i.categories])]));
-    arr.sort((a, b) => (a < b ? -1 : 1));
-    setCategories(arr);
-    setFilteredtems(items);
-  }, [items]);
+    axios
+      .get<IPortfoliItem[]>(`${apiUrl}/data/portfolio.json`)
+      .then(({ data }) => dispatch(loadPortfolios(data)));
+  }, []);
 
   const onFilter = useCallback(
     (e: SyntheticEvent, category: string) => {
       e.preventDefault();
-      if (category === "all") {
-        setFilteredtems(items);
-      } else
-        setFilteredtems(items.filter((i) => i.categories.includes(category)));
+      dispatch(setActiveCategory(category));
     },
     [items]
   );
@@ -60,11 +57,11 @@ const PortfolioComponent = () => {
       const fisrtChild = grid.querySelector("figure");
       const h =
         Math.abs(
-          Number(fisrtChild?.offsetHeight) * Math.ceil(filteredItems.length / 3)
+          Number(fisrtChild?.offsetHeight) * Math.ceil(items.length / 3)
         ) + 50;
       setGridHeight(`${h}px`);
     }
-  }, [gridContainer, filteredItems]);
+  }, [gridContainer, items]);
 
   return (
     <SectionComponent
@@ -74,20 +71,13 @@ const PortfolioComponent = () => {
       }}
     >
       <div className="portfolio-content">
-        {/* <!-- Portfolio filter --> */}
+        {/*  Portfolio filter  */}
         <ul id="portfolio_filters" className="portfolio-filters">
-          <li className="active">
-            <a
-              href="/"
-              className="filter btn btn-sm btn-link active"
-              onClick={(e) => onFilter(e, "all")}
-            >
-              All
-            </a>
-          </li>
-
           {categories.map((category, index) => (
-            <li key={"filter-" + index}>
+            <li
+              className={activeCategory === category ? "active" : ""}
+              key={index}
+            >
               <a
                 href="/"
                 className="filter btn btn-sm btn-link"
@@ -98,9 +88,9 @@ const PortfolioComponent = () => {
             </li>
           ))}
         </ul>
-        {/* <!-- End of Portfolio filter --> */}
+        {/*  End of Portfolio filter  */}
 
-        {/* <!-- Portfolio Grid --> */}
+        {/*  Portfolio Grid  */}
         <div
           id="portfolio_grid"
           className="portfolio-grid three-columns shuffle"
@@ -109,14 +99,14 @@ const PortfolioComponent = () => {
         >
           <ImagePreloadComponent>
             <AnimatePresence>
-              {filteredItems.map((item, index) => (
+              {items.map((item, index) => (
                 <PortfolioItem project={item} key={`${item.id}${index}`} />
               ))}
             </AnimatePresence>
           </ImagePreloadComponent>
         </div>
-        {/* <!-- /Portfolio Grid --> */}
-        {filteredItems && (
+        {/*  /Portfolio Grid  */}
+        {items.length && (
           <div className="row">
             <div className="center col-lg-12 col-md-12 col-sm-12">
               <a

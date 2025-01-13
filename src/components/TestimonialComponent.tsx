@@ -10,6 +10,7 @@ import { setTestimonies } from "../store/slices/testimonySlice";
 import { ITestimony } from "./testimonial/ITestimony";
 import ImagePreloadComponent from "./ImagePreloadComponent";
 import { Navigation, Pagination } from "swiper/modules";
+import { apiUrl } from "../config";
 
 const PrevSlideButton = () => {
   const swiper = useSwiper();
@@ -28,7 +29,7 @@ const TestimonialComponent = () => {
   useEffect(() => {
     (async () => {
       const { data } = await axios.get<ITestimony[]>(
-        "http://localhost:3000/data/testimonials.json"
+        `${apiUrl}/data/testimonials.json`
       );
       dispatch(setTestimonies(data));
     })();

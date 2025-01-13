@@ -1,6 +1,9 @@
-import { SyntheticEvent } from "react";
-import { useLocation } from "react-router-dom";
-import { selectPortfolioItemById } from "../../../store/selectors/portfolioSelectors";
+import { SyntheticEvent, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  selectPortfolioItemById,
+  selectPortfolioProjects,
+} from "../../../store/selectors/portfolioSelectors";
 import { RootState } from "../../../store";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
@@ -21,13 +24,61 @@ const PortfolioDetailComponent = ({
   emitClose: CallableFunction;
 }) => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const [next, setNext] = useState<undefined | string>(undefined);
+  const [prev, setPrev] = useState<undefined | string>(undefined);
+  const projects = useSelector(selectPortfolioProjects);
   const portfolio = useSelector((state: RootState) =>
     selectPortfolioItemById(state, String(location.hash).replace("#", ""))
   );
 
   const onCloseHandler = (e: SyntheticEvent) => {
     e.preventDefault();
-    setTimeout(() => emitClose(), 300);
+    emitClose();
+  };
+
+  const handleClick = (
+    e: SyntheticEvent,
+    direction: "prev" | "next" = "next"
+  ) => {
+    e.preventDefault();
+
+    const id = location.hash.split("#")[1];
+    console.log("hash", location.hash);
+    console.log("id", id);
+
+    const index = projects.findIndex((p) => p.id == id);
+    console.log("idx", index);
+    if (direction === "next") {
+      let p = index;
+      let n;
+
+      while (index < projects.length - 1) {
+        if (projects[index + 1]) {
+          setNext("#" + projects[index + 1].id);
+          setPrev("#" + projects[p].id);
+
+          navigate("#" + projects[index + 1].id);
+          break;
+        }
+      }
+      if (projects.length - 1 === index) setNext(undefined);
+      setPrev("#" + (index - 2));
+    } else {
+      let p;
+      let n = index;
+
+      while (0 < index) {
+        if (projects[index - 1]) {
+          setNext("#" + projects[index].id);
+          setPrev("#" + projects[index - 1].id);
+          navigate("#" + projects[index - 1].id);
+          break;
+        }
+      }
+      if (index === 0) setPrev(undefined);
+    }
+    console.log("navidate", "#" + id);
   };
 
   return (
@@ -41,10 +92,14 @@ const PortfolioDetailComponent = ({
           <div className="ajax-page-wrapper">
             <div className="ajax-page-nav">
               <div className="nav-item ajax-page-prev-next">
-                <a className="ajax-page-load" href="portfolio-2.html">
+                <a
+                  className="ajax-page-load"
+                  href={prev}
+                  onClick={(e) => handleClick(e, "prev")}
+                >
                   <i className="zmdi zmdi-chevron-left"></i>
                 </a>
-                <a className="ajax-page-load" href="portfolio-4.html">
+                <a className="ajax-page-load" href={next} onClick={handleClick}>
                   <i className="zmdi zmdi-chevron-right"></i>
                 </a>
               </div>
@@ -101,7 +156,7 @@ const PortfolioDetailComponent = ({
               </div>
 
               <div className="col-sm-5 col-md-5 portfolio-block">
-                {/* <!-- Project Description --> */}
+                {/*  Project Description  */}
                 <div className="block-title">
                   <h3>Description</h3>
                 </div>
@@ -128,7 +183,7 @@ const PortfolioDetailComponent = ({
                   {portfolio.date && (
                     <li>
                       <p>
-                        <i className="fa fa-calendar"></i>{" "}
+                        <i className="fa fa-calendar"></i>
                         {new Date(portfolio.date).getFullYear()}
                       </p>
                     </li>
@@ -140,9 +195,9 @@ const PortfolioDetailComponent = ({
                     ? portfolio.description
                     : "To be updated soon..."}
                 </p>
-                {/* <!-- /Project Description --> */}
+                {/*  /Project Description  */}
 
-                {/* <!-- Technology --> */}
+                {/*  Technology  */}
                 <div className="tags-block">
                   <div className="block-title">
                     <h3>Technology</h3>
@@ -155,24 +210,7 @@ const PortfolioDetailComponent = ({
                     ))}
                   </ul>
                 </div>
-                {/* <!-- /Technology --> */}
-
-                {/* <!-- Share Buttons --> */}
-                {/* <div className="btn-group share-buttons">
-                  <div className="block-title">
-                    <h3>Share</h3>
-                  </div>
-                  <a href="/" target="_blank" className="btn">
-                    <i className="fa fa-facebook"></i>
-                  </a>
-                  <a href="/" target="_blank" className="btn">
-                    <i className="fa fa-twitter"></i>
-                  </a>
-                  <a href="/" target="_blank" className="btn">
-                    <i className="fa fa-dribbble"></i>
-                  </a>
-                </div> */}
-                {/* <!-- /Share Buttons --> */}
+                {/*  /Technology  */}
               </div>
             </div>
           </div>

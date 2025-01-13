@@ -14,7 +14,7 @@ const HomeComponent = () => {
     email,
     mobileNumber,
   } = useSelector(userSelector);
-  const image = require("../assets/images/morieskie-274x.png");
+  const image = require("./../../assets/images/morieskie-274x.png");
   const dispatch = useDispatch();
 
   useEffect(() => {
