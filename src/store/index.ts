@@ -10,7 +10,7 @@ export const store = configureStore({
   reducer: {
     user: userReducer,
     loader: loaderReducer,
-    portfolios: portfolioSlice,
+    portfolio: portfolioSlice,
     menu: menuSlice,
     theme: themeSlice,
     testimony: testimonySlice

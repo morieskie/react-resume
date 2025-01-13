@@ -3,17 +3,33 @@ import { IPortfoliItem } from "../../components/pages/portfolio/IPortfolioItem";
 
 const portfolioSlice = createSlice({
   name: "portfolioSlice",
-  initialState: [] as IPortfoliItem[],
+  initialState: {
+    projects: [] as IPortfoliItem[],
+    activeCategory: "all",
+    categories: [] as string[],
+  },
   reducers: {
     loadPortfolios: (state, action: PayloadAction<IPortfoliItem[]>) => {
-      return [...state, ...action.payload];
+      let categories: string[] = [];
+      action.payload.forEach(
+        (i) => (categories = [...new Set([...categories, ...i.categories])])
+      );
+      categories.sort((a, b) => (a < b ? -1 : 1));
+      return { ...state, projects: action.payload, categories };
     },
     addItem: (state, action: PayloadAction<IPortfoliItem>) => {
-      return [...state, action.payload];
+      return { ...state, projects: [...state.projects, action.payload] };
+    },
+    setActiveCategory: (state, action: PayloadAction<string>) => {
+      return {
+        ...state,
+        activeCategory: action.payload,
+      };
     },
   },
 });
 
-export const { loadPortfolios, addItem } = portfolioSlice.actions;
+export const { loadPortfolios, addItem, setActiveCategory } =
+  portfolioSlice.actions;
 
 export default portfolioSlice.reducer;
