@@ -1,0 +1,42 @@
+{
+  "name": {
+    "firstName": "Derick",
+    "lastName": "Fynn"
+  },
+  "email": "dcfynn@icloud.com",
+  "dob": "14/10/1958",
+  "address": "Summer Greens, Cape Town, South Africa",
+  "mobileNumber": "+27 69 142 8725",
+  "imageSrc": "assets/images/avatar.png",
+  "bio": "I have 12+ years of experience as a Software Engineer, specializing in JavaScript/TypeScript, PHP, and NodeJS development with frameworks like Laravel, Angular, VueJS, and React. I have expertise in SQL/noSQL databases and DevOps tools (Docker, GitLab CI, Bitbucket Pipelines, Github Actions, AWS, etc.). I thrive in Agile environments, using Jira and gitflow workflows. As a former Tech Lead, I excel in technical documentation, cross-team collaboration, and efficient project delivery",
+  "socialLinks": [
+  {
+    "firm": "Stack Overflow",
+    "icon": {
+      "className": "fa fa-stack-overflow"
+    },
+    "url": "https://meta.stackoverflow.com/users/3572784/morieskie"
+  },
+  {
+    "firm": "Github",
+    "icon": {
+      "className": "fa fa-github"
+    },
+    "url": "https://github.com/morieskie"
+  },
+  {
+    "firm": "Linkedin",
+    "icon": {
+      "className": "fa fa-linkedin"
+    },
+    "url": "https://linkedin.com/in/dcfynn"
+  },
+  {
+    "firm": "Google",
+    "icon": {
+      "className": "fa fa-google"
+    },
+    "url": "#"
+  }
+]
+}
