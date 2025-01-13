@@ -1,1 +1,1 @@
-export const apiUrl = process.env.RESUME_APP_API_UR || 'http://localhost:3000';
+export const apiUrl = process.env.RESUME_APP_API_UR || '';
