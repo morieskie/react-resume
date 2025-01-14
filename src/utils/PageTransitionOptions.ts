@@ -44,15 +44,18 @@ export const PageTransitionOptions = {
       initial: {
         opacity: 0.2,
         transformOrigin: "50% 0%",
-        transform: [
-          "translateY(100%) rotateX(-90deg)",
-          "translateY(50%) translateZ(-200px) rotateX(-45deg)",
-        ],
+        translateY: '100%',
+        rotateX: '-90%'
       },
       animate: {
         transformOrigin: "50% 50%",
         transition: { duration: 0.6, ease: "easeIn" },
-        transform: "translateY(0%) translateZ(0px) rotateX(0deg)",
+        transform: [
+          "translateY(100%) rotateX(-90deg)",
+          "translateY(50%) translateZ(-200px) rotateX(-45deg)",
+          "translateY(0%) translateZ(0px) rotateX(0deg)"
+        ],
+        // transform: "translateY(0%) translateZ(0px) rotateX(0deg)",
         opacity: 1,
       },
       exit: {
