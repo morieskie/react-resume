@@ -35,7 +35,7 @@ const { initial, animate, exit } =
     axios
       .get<any>(`${apiUrl}/data/about.json`)
       .then(({ data }) => dispatch(setUser(data)));
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
