@@ -55,7 +55,6 @@ export const PageTransitionOptions = {
           "translateY(50%) translateZ(-200px) rotateX(-45deg)",
           "translateY(0%) translateZ(0px) rotateX(0deg)"
         ],
-        // transform: "translateY(0%) translateZ(0px) rotateX(0deg)",
         opacity: 1,
       },
       exit: {
