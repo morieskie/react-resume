@@ -10,6 +10,26 @@ const __dirname = path.dirname(__filename);
 fs.copy("src/assets/data", "public/data", (err: any) => {
   if (err) return console.error(err);
   console.log("Data copied successfully!");
+  const jsonFiles = glob.sync(
+    path.join(__dirname, "public/data/**/*.json")
+  );
+
+  jsonFiles.forEach((file) => {
+    try {
+      // Read the JSON file
+      const source = fs.readFileSync(file, "utf8");
+
+      // Parse and stringify the JSON to remove unnecessary whitespace
+      const minified = JSON.stringify(JSON.parse(source));
+
+      // Write the minified JSON back to the file
+      fs.writeFileSync(file, minified, "utf8");
+
+      console.log(`Minified JSON: ${file}`);
+    } catch (error) {
+      console.error(`Error processing file ${file}:`, error);
+    }
+  });
 });
 
 fs.copy("src/assets/images", "public/assets/images", (err: any) => {

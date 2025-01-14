@@ -1,7 +1,7 @@
 import "./App.css";
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { useLocation } from "react-router-dom";
 import HomeComponent from "./components/pages/HomeComponent";
 import ResumeComponent from "./components/pages/ResumeComponent";
@@ -15,11 +15,25 @@ import MainContentComponent from "./components/MainContentComponent";
 import DynamicContentComponent from "./components/DynamicContentComponent";
 import ThemeSelectorComponent from "./components/ThemeSelectorComponent";
 import { PageTransitionOptions } from "./utils/PageTransitionOptions";
+import axios from "axios";
+import { setUser } from "./store/slices/userSlice";
+import { apiUrl } from "./config";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-const {initial,animate,exit} = PageTransitionOptions.transition.rotatePullLeft;
+const { initial, animate, exit } =
+  PageTransitionOptions.transition.rotatePullLeft;
 
 function App() {
   const location = useLocation();
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    axios
+      .get<any>(`${apiUrl}/data/about.json`)
+      .then(({ data }) => dispatch(setUser(data)));
+  }, []);
+
   return (
     <>
       <PageLayoutComponent>

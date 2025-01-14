@@ -7,7 +7,7 @@ export const selectPortfolioActiveCategory = (state: RootState) =>
 export const selectPortfolioProjects = ({
   portfolio: { projects, activeCategory },
 }: RootState) => {
-  return activeCategory === "all"
+  return activeCategory === ""
     ? projects
     : projects.filter((p) => p.categories.includes(activeCategory));
 };

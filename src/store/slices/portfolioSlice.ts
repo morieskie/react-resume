@@ -5,7 +5,7 @@ const portfolioSlice = createSlice({
   name: "portfolioSlice",
   initialState: {
     projects: [] as IPortfoliItem[],
-    activeCategory: "all",
+    activeCategory: "",
     categories: [] as string[],
   },
   reducers: {
