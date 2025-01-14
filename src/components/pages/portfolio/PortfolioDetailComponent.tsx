@@ -45,7 +45,7 @@ const PortfolioDetailComponent = ({
 
     const id = location.hash.split("#")[1];
 
-    const index = projects.findIndex((p) => p.id == id);
+    const index = projects.findIndex((p) => String(p.id) === String(id));
     if (direction === "next") {
       let p = index;
       let n;
