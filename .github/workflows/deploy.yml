@@ -1,4 +1,4 @@
-name: Deploy React App
+name: React Resume
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -19,15 +19,54 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm install -f
 
-      - name: Build React App
-        run: npm run build
+      - name: Build the React app
+        run: |
+          npm run build
+          if [ ! -d "./build" ]; then
+            echo "Build directory not found!"
+            exit 1
+          fi
+
+      - name: List directory contents
+        run: |
+          echo "Listing root directory:"
+          ls -l
+          # echo "Listing project directory:"
+          # ls -l ./react-resume
+          # echo "Listing build directory (if exists):"
+          # ls -l ./react-resume/build
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./build # Path to the React build directory
+
+
+
+    #       build:
+    # runs-on: ubuntu-latest
+
+    # steps:
+    #   - name: Checkout repository
+    #     uses: actions/checkout@v3
+
+    #   - name: Setup Node.js
+    #     uses: actions/setup-node@v3
+    #     with:
+    #       node-version: 18
+
+    #   - name: Install dependencies
+    #     run: npm install
+
+    #   - name: Build React App
+    #     run: npm run build
+
+    #   - name: Upload build artifact
+    #     uses: actions/upload-pages-artifact@v1
+    #     with:
+    #       path: ./build # Path to the React build directory
 
   deploy:
     needs: build
@@ -40,3 +79,52 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+  # # Deploy job
+  # deploy:
+  #   # Add a dependency to the build job
+  #   needs: build
+
+  #   # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+  #   permissions:
+  #     pages: write      # to deploy to Pages
+  #     id-token: write   # to verify the deployment originates from an appropriate source
+
+  #   # Deploy to the github-pages environment
+  #   environment:
+  #     name: github-pages
+  #     # url: ${{ steps.deployment.outputs.page_url }}
+  #     url: 'https://morieskie.github.io/react-resume'
+
+    # Specify runner + deployment step
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
+        with:
+          artifact_name: ./build
+
+  # deploy:
+  #   needs: build
+  #   permissions:
+  #     contents: write
+  #     pages: write
+  #     id-token: write
+  #   environment:
+  #     name: github-pages
+  #     url: 'https://morieskie.github.io/react-resume'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Deploy to GitHub Pages
+  #       uses: peaceiris/actions-gh-pages@v3
+  #       with:
+  #         github_token: ${{ secrets.REACT_RESUME_PAT }}
+  #         publish_dir: ./build
+        # - name: Deploy to GitHub Pages
+        # uses: peaceiris/actions-gh-pages@v3
+        # with:
+        #   github_token: ${{ secrets.REACT_RESUME_PAT }}
+        #   publish_dir: ./build
