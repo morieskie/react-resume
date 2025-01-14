@@ -54,5 +54,5 @@ jobs:
           github_token: ${{ secrets.REACT_RESUME_PAT }}
           publish_dir: ./build
 
-      - name: Check build directory contents
-        run: ls -l ./build
+      # - name: Check build directory contents
+      #   run: ls -l ./build
