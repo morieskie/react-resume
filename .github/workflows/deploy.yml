@@ -6,10 +6,10 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     permissions:
-      pages: write      # To deploy to Pages
-      id-token: write   # To verify the deployment source
+      pages: write      # Required to deploy to GitHub Pages
+      id-token: write   # Required for verification of the deployment
 
     environment:
       name: github-pages
@@ -37,7 +37,7 @@ jobs:
             exit 1
           fi
 
-      - name: Debug Directory Structure
+      - name: Debug Directory Contents
         run: |
           echo "Root directory contents:"
           ls -l
@@ -50,7 +50,4 @@ jobs:
           path: ./build
 
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: "github-pages"
