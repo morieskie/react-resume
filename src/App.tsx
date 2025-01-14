@@ -21,13 +21,16 @@ import { apiUrl } from "./config";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-const { initial, animate, exit } =
-  PageTransitionOptions.transition.rotatePullLeft;
+const animations = Object.values(PageTransitionOptions.transition);
 
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
-  
+
+
+const { initial, animate, exit } =
+  animations[Math.floor(Math.random() * animations.length)];
+
   useEffect(() => {
     axios
       .get<any>(`${apiUrl}/data/about.json`)
