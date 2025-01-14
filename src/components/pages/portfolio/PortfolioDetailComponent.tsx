@@ -44,11 +44,8 @@ const PortfolioDetailComponent = ({
     e.preventDefault();
 
     const id = location.hash.split("#")[1];
-    console.log("hash", location.hash);
-    console.log("id", id);
 
     const index = projects.findIndex((p) => p.id == id);
-    console.log("idx", index);
     if (direction === "next") {
       let p = index;
       let n;
@@ -78,7 +75,6 @@ const PortfolioDetailComponent = ({
       }
       if (index === 0) setPrev(undefined);
     }
-    console.log("navidate", "#" + id);
   };
 
   return (

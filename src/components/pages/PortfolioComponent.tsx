@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import SectionComponent from "../../components/SectionContent";
-// import { unsetLoading } from "../store/slices/loaderSlice";
 import {
   SyntheticEvent,
   useCallback,
@@ -26,9 +25,6 @@ import ImagePreloadComponent from "../../components/ImagePreloadComponent";
 import { apiUrl } from "../../config";
 
 const PortfolioComponent = () => {
-  // const isLoading = useSelector(
-  //   (state: { loader: { isLoading: boolean } }) => state.loader.isLoading
-  // );
   const dispatch = useDispatch<AppDispatch>();
 
   const items = useSelector(selectPortfolioProjects);

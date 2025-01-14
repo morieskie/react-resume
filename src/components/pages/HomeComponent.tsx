@@ -10,8 +10,6 @@ const HomeComponent = () => {
   } = useSelector(userSelector);
   const image = require("./../../assets/images/morieskie-274x.png");
 
-
-
   const muskNumber = (number: string) => {
     return (
       String(number).slice(0, 7) + String(number).slice(10).padStart(8, "#")

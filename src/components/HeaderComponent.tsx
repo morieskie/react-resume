@@ -26,7 +26,6 @@ const HeaderComponent = () => {
   const [titleClasses, setTitleClasses] = useState("mobile-hidden");
 
   const toggleMenu = (e: SyntheticEvent) => {
-    console.log("headerClasses", headerClasses);
     if (headerClasses.indexOf("mobile-menu-hide") !== -1) {
       dispatch(showMobileMenu());
       setTitleClasses(siteTitleClass);

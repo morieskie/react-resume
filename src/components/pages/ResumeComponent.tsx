@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import SectionComponent from "../../components/SectionContent";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -8,7 +7,6 @@ import { apiUrl } from "../../config";
 const ResumeComponent = () => {
   const [education, setEducation] = useState<{}[]>([]);
   const [experience, setExperience] = useState<{}[]>([]);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     try {
