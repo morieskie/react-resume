@@ -37,14 +37,14 @@ const PortfolioComponent = () => {
     axios
       .get<IPortfoliItem[]>(`${apiUrl}/data/portfolio.json`)
       .then(({ data }) => dispatch(loadPortfolios(data)));
-  }, []);
+  }, [dispatch]);
 
   const onFilter = useCallback(
     (e: SyntheticEvent, category: string) => {
       e.preventDefault();
       dispatch(setActiveCategory(category));
     },
-    [items]
+    [dispatch]
   );
 
   useEffect(() => {

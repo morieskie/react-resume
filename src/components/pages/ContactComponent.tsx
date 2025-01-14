@@ -1,13 +1,11 @@
 import { useSelector } from "react-redux";
 import SectionComponent from "../SectionContent";
-import { useEffect } from "react";
 import MapComponent from "../MapComponent";
 import { userSelector } from "../../store/selectors/userSelectors";
 
 const ContactComponent = () => {
-  const { socialLinks, mobileNumber, email, address } =
+  const { mobileNumber, email, address } =
     useSelector(userSelector);
-  const image = require("./../../assets/images/morieskie-274x.png");
   return (
     <SectionComponent
       sectionTitle="Contact"

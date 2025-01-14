@@ -49,7 +49,7 @@ const HeaderComponent = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

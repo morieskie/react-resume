@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import PortfolioDetailComponent from "./pages/portfolio/PortfolioDetailComponent";
 
 const DynamicContentComponent = () => {
@@ -8,7 +7,6 @@ const DynamicContentComponent = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isVisible, setVisibility] = useState<boolean>(false);
-  const dispatch = useDispatch();
 
   const getClassName = useCallback((): string => {
     let result: string[] = [];

@@ -48,7 +48,6 @@ const PortfolioDetailComponent = ({
     const index = projects.findIndex((p) => String(p.id) === String(id));
     if (direction === "next") {
       let p = index;
-      let n;
 
       while (index < projects.length - 1) {
         if (projects[index + 1]) {
@@ -62,9 +61,6 @@ const PortfolioDetailComponent = ({
       if (projects.length - 1 === index) setNext(undefined);
       setPrev("#" + (index - 2));
     } else {
-      let p;
-      let n = index;
-
       while (0 < index) {
         if (projects[index - 1]) {
           setNext("#" + projects[index].id);
