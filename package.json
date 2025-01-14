@@ -4,6 +4,7 @@
     "name": "Derick Fynn",
     "email": "dcfynn@icloud.com"
   },
+  "homepage": "https://morieskie.github.io/react-resume",
   "version": "0.1.0",
   "private": true,
   "type": "module",
