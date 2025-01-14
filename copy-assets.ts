@@ -7,11 +7,13 @@ import * as Csso from "csso";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-fs.copy("src/assets/data", "build/static/data", (err: any) => {
+const PUBLIC_FOLDER = "public";
+
+fs.copy("src/assets/data", `${PUBLIC_FOLDER}/data`, (err: any) => {
   if (err) return console.error(err);
   console.log("Data copied successfully!");
   const jsonFiles = glob.sync(
-    path.join(__dirname, "build/static/data/**/*.json")
+    path.join(__dirname, `${PUBLIC_FOLDER}/data/**/*.json`)
   );
 
   jsonFiles.forEach((file) => {
@@ -32,16 +34,16 @@ fs.copy("src/assets/data", "build/static/data", (err: any) => {
   });
 });
 
-fs.copy("src/assets/images", "build/static/assets/images", (err: any) => {
+fs.copy("src/assets/images", `${PUBLIC_FOLDER}/assets/images`, (err: any) => {
   if (err) return console.error(err);
   console.log("Images copied successfully!");
 });
 
-fs.copy("src/assets/css/theme", "build/static/assets/css", (err: any) => {
+fs.copy("src/assets/css/theme", `${PUBLIC_FOLDER}/assets/css`, (err: any) => {
   if (err) return console.error(err);
   console.log("Theme CSS copied successfully!");
   const cssFiles = glob.sync(
-    path.join(__dirname, "build/static/assets/css/**/*.css")
+    path.join(__dirname, `${PUBLIC_FOLDER}/assets/css/**/*.css`)
   );
 
   cssFiles.forEach((file) => {

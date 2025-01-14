@@ -8,9 +8,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-  // mode: "production",
   entry: "./src/index.tsx",
   resolve: {
+    extensions: [".tsx", ".ts", ".js"], // Resolve these extensions
     fallback: {
       os: require.resolve("os-browserify/browser"),
     },
@@ -108,7 +108,4 @@ export default {
       },
     },
   ],
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"], // Resolve these extensions
-  },
 };
