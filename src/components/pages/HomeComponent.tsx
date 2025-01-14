@@ -1,28 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { userSelector } from "../../store/selectors/userSelectors";
-import axios from "axios";
-import { setUser } from "../../store/slices/userSlice";
-import { apiUrl } from "../../config";
+import ReactHtmlParser from 'react-html-parser';
 
 const HomeComponent = () => {
   const {
     name: { firstName, lastName },
     socialLinks,
     bio,
-    address,
-    email,
-    mobileNumber,
   } = useSelector(userSelector);
   const image = require("./../../assets/images/morieskie-274x.png");
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("ENV", process.env.RESUME_APP_API_URL);
-    axios
-      .get<any>(`${apiUrl}/data/about.json`)
-      .then(({ data }) => dispatch(setUser(data)));
-  }, []);
+
 
   const muskNumber = (number: string) => {
     return (
@@ -77,18 +65,18 @@ const HomeComponent = () => {
         </div>
         <div className={`page-content`}>
           <div className="row align-items-start">
-            <div className="col-sm-6 col-md-7 col-lg-7">
+            <div className="col-sm-12 col-md-12 col-lg-12">
               <div className="about-me">
                 <div className="block-title">
                   <h3>
                     About <span>Me</span>
                   </h3>
                 </div>
-                <p className="text-justify">{bio}</p>
+                <div className="text-justify">{ReactHtmlParser(bio)}</div>
               </div>
             </div>
 
-            <div className="col-sm-6 col-md-5 col-lg-5">
+            {/* <div className="col-sm-6 col-md-5 col-lg-5">
               <h3>&nbsp;</h3>
               <ul className="info-list">
                 <li>
@@ -110,7 +98,7 @@ const HomeComponent = () => {
                   <span className="value available">Available</span>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             <div className="download-resume">
               <button className="btn btn-secondary">Download Resume</button>

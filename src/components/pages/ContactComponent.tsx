@@ -1,14 +1,13 @@
-// import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SectionComponent from "../SectionContent";
-// import { unsetLoading } from "../store/slices/loaderSlice";
 import { useEffect } from "react";
 import MapComponent from "../MapComponent";
+import { userSelector } from "../../store/selectors/userSelectors";
 
 const ContactComponent = () => {
-  // const isLoading = useSelector(
-  //   (state: { loader: { isLoading: boolean } }) => state.loader.isLoading
-  // );
-  // const dispatch = useDispatch();
+  const { socialLinks, mobileNumber, email, address } =
+    useSelector(userSelector);
+  const image = require("./../../assets/images/morieskie-274x.png");
   return (
     <SectionComponent
       sectionTitle="Contact"
@@ -39,7 +38,7 @@ const ContactComponent = () => {
               <i className="fa fa-map-marker"></i>
             </div>
             <div className="ci-text">
-              <h5>JHB, Cape Town</h5>
+              <h5>{address}</h5>
             </div>
           </div>
           <div className="contact-info-block">
@@ -47,7 +46,7 @@ const ContactComponent = () => {
               <i className="fa fa-envelope"></i>
             </div>
             <div className="ci-text">
-              <h5>anele[at]acedesigns.co.za</h5>
+              <h5>{email}</h5>
             </div>
           </div>
           <div className="contact-info-block">
@@ -55,7 +54,7 @@ const ContactComponent = () => {
               <i className="fa fa-phone"></i>
             </div>
             <div className="ci-text">
-              <h5>+123 456 78900</h5>
+              <h5>{mobileNumber}</h5>
             </div>
           </div>
           <div className="contact-info-block">

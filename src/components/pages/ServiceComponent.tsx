@@ -25,7 +25,7 @@ const ServiceComponent = () => {
               {/* <!--<i className="service-icon fa fa-shopping-cart"></i>--> */}
               <div className="service-image">
                 <img
-                  src="images/service/web_design_icon.png"
+                  src="/assets/images/service/web_design_icon.png"
                   alt="Responsive Design"
                   className="mCS_img_loaded"
                 />
@@ -44,7 +44,7 @@ const ServiceComponent = () => {
             <div className="service-info">
               <div className="service-image">
                 <img
-                  src="images/service/photography_icon.png"
+                  src="/assets/images/service/photography_icon.png"
                   alt="Photography"
                   className="mCS_img_loaded"
                 />
@@ -63,7 +63,7 @@ const ServiceComponent = () => {
             <div className="service-info">
               <div className="service-image">
                 <img
-                  src="images/service/mobile_app_icon.png"
+                  src="/assets/images/service/mobile_app_icon.png"
                   alt="Advetising"
                   className="mCS_img_loaded"
                 />
@@ -83,7 +83,7 @@ const ServiceComponent = () => {
             <div className="service-info">
               <div className="service-image">
                 <img
-                  src="images/service/advetising_icon.png"
+                  src="/assets/images/service/advetising_icon.png"
                   alt="Advetising"
                   className="mCS_img_loaded"
                 />
@@ -97,12 +97,12 @@ const ServiceComponent = () => {
             </div>
           </div>
         </div>
-        <div className="col-sm-6 col-md-3">
+        {/* <div className="col-sm-6 col-md-3">
           <div className="service-block">
             <div className="service-info">
               <div className="service-image">
                 <img
-                  src="images/service/creativity_icon.png"
+                  src="/assets/images/service/creativity_icon.png"
                   alt="Creativity"
                   className="mCS_img_loaded"
                 />
@@ -114,7 +114,7 @@ const ServiceComponent = () => {
               </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <TestimonialComponent />
