@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/react-resume/static/css/main.ec8da205.css",
+    "main.js": "/react-resume/static/js/main.d2585785.js",
+    "static/js/488.692ba21b.chunk.js": "/react-resume/static/js/488.692ba21b.chunk.js",
+    "static/media/fontawesome-webfont3e6e.svg?v=4.7.0": "/react-resume/static/media/fontawesome-webfont3e6e.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/fontawesome-webfont3e6e.eot?v=4.7.0": "/react-resume/static/media/fontawesome-webfont3e6e.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfontd41d.eot": "/react-resume/static/media/fontawesome-webfontd41d.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont3e6e.ttf?v=4.7.0": "/react-resume/static/media/fontawesome-webfont3e6e.1e59d2330b4c6deb84b3.ttf",
+    "static/media/Material-Design-Iconic-Fontd1f1.ttf?v=2.2.0": "/react-resume/static/media/Material-Design-Iconic-Fontd1f1.5a588d6a8bfc41d69f88.ttf",
+    "static/media/fontawesome-webfont3e6e.woff?v=4.7.0": "/react-resume/static/media/fontawesome-webfont3e6e.f691f37e57f04c152e23.woff",
+    "static/media/morieskie-274x.png": "/react-resume/static/media/morieskie-274x.d020a79ec30b910ce5d9.png",
+    "static/media/fontawesome-webfont3e6e.woff2?v=4.7.0": "/react-resume/static/media/fontawesome-webfont3e6e.20fd1704ea223900efa9.woff2",
+    "static/media/Material-Design-Iconic-Fontd1f1.woff?v=2.2.0": "/react-resume/static/media/Material-Design-Iconic-Fontd1f1.bd9b02bf1131d90bfe22.woff",
+    "static/media/main_bg.png": "/react-resume/static/media/main_bg.e7e435161f2bed15b263.png",
+    "static/media/sp_main_bg.png": "/react-resume/static/media/sp_main_bg.e7ec0e11e7847c3ed5e6.png",
+    "static/media/Material-Design-Iconic-Fontd1f1.woff2?v=2.2.0": "/react-resume/static/media/Material-Design-Iconic-Fontd1f1.6ee80f4bf5d3f92f3bf7.woff2",
+    "index.html": "/react-resume/index.html",
+    "main.ec8da205.css.map": "/react-resume/static/css/main.ec8da205.css.map",
+    "main.d2585785.js.map": "/react-resume/static/js/main.d2585785.js.map",
+    "488.692ba21b.chunk.js.map": "/react-resume/static/js/488.692ba21b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec8da205.css",
+    "static/js/main.d2585785.js"
+  ]
+}
