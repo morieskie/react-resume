@@ -1,4 +1,5 @@
 name: React Resume
+
 on:
   push:
     branches:
@@ -7,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,13 +22,15 @@ jobs:
         run: npm install -f
 
       - name: Build the React app
-        run: npm run build
+        run: |
+          npm run build
+          if [ ! -d "./build" ]; then
+            echo "Build directory not found!"
+            exit 1
+          fi
 
-      - name: Upload build directory
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          path: ./build
+      - name: Verify build output
+        run: ls -l ./build
 
   deploy:
     needs: build
@@ -36,23 +40,14 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: "https://morieskie.github.io/react-resume"
-
+      url: 'https://morieskie.github.io/react-resume'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Deploy to GitHub Pages
         uses: actions/checkout@v3
 
-      - name: Download build directory
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.REACT_RESUME_PAT }}
           publish_dir: ./build
-
-      # - name: Check build directory contents
-      #   run: ls -l ./build
