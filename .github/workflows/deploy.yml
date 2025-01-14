@@ -45,7 +45,7 @@ jobs:
           ls -l ./build
 
       - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./build
 
