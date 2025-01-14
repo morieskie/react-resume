@@ -33,27 +33,34 @@ jobs:
         run: |
           echo "Listing root directory:"
           ls -l
-          echo "Listing project directory:"
-          ls -l ./react-resume
-          echo "Listing build directory (if exists):"
-          ls -l ./react-resume/build
+          # echo "Listing project directory:"
+          # ls -l ./react-resume
+          # echo "Listing build directory (if exists):"
+          # ls -l ./react-resume/build
 
-  deploy:
-    needs: build
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: 'https://morieskie.github.io/react-resume'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.REACT_RESUME_PAT }}
           publish_dir: ./build
+
+  # deploy:
+  #   needs: build
+  #   permissions:
+  #     contents: write
+  #     pages: write
+  #     id-token: write
+  #   environment:
+  #     name: github-pages
+  #     url: 'https://morieskie.github.io/react-resume'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+  #     - name: Deploy to GitHub Pages
+  #       uses: peaceiris/actions-gh-pages@v3
+  #       with:
+  #         github_token: ${{ secrets.REACT_RESUME_PAT }}
+  #         publish_dir: ./build
