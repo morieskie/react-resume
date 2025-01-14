@@ -89,13 +89,14 @@
       "/assets/images/portfolio/full/pnp/6.png",
       "/assets/images/portfolio/full/pnp/7.png",
       "/assets/images/portfolio/full/pnp/1.png",
-      "/assets/images/portfolio/full/pnp/8.png"
+      "/assets/images/portfolio/full/pnp/8.png",
+      "/assets/images/portfolio/full/pnp/14.png"
     ]
   },
   {
     "id": 20,
     "project": "Tourney Direct",
-    "categories": ["sports", "crm", "ecommerce", "api","cms", "web"],
+    "categories": ["sports", "crm", "ecommerce", "api", "cms", "web"],
     "description": "Integrated HubSpot with payment gateway (Stripe), synchronizing user registrations, payments, and transactions.",
     "technologies": [
       "js",
@@ -217,7 +218,15 @@
   {
     "id": 4,
     "project": "Sanlam Reality",
-    "categories": ["insurance", "ecommerce", "health", "cms", "api", "web"],
+    "categories": [
+      "insurance",
+      "ecommerce",
+      "health",
+      "cms",
+      "api",
+      "web",
+      "mobile"
+    ],
     "description": "Improved Sanlam Reality API integration by implementing a Pub/Sub system with Pusher websockets, reducing stuck payments and enhancing user experience.",
     "technologies": [
       "js",
@@ -245,13 +254,26 @@
     "images": [
       "/assets/images/portfolio/full/sanlamreality/1.png",
       "/assets/images/portfolio/full/sanlamreality/2.png",
-      "/assets/images/portfolio/full/sanlamreality/3.png"
+      "/assets/images/portfolio/full/sanlamreality/3.png",
+      "/assets/images/portfolio/full/sanlamreality/4.jpg",
+      "/assets/images/portfolio/full/sanlamreality/5.jpg",
+      "/assets/images/portfolio/full/sanlamreality/6.jpg",
+      "/assets/images/portfolio/full/sanlamreality/7.jpg",
+      "/assets/images/portfolio/full/sanlamreality/8.jpg",
+      "/assets/images/portfolio/full/sanlamreality/9.jpg",
+      "/assets/images/portfolio/full/sanlamreality/10.jpg",
+      "/assets/images/portfolio/full/sanlamreality/11.jpg",
+      "/assets/images/portfolio/full/sanlamreality/12.jpg",
+      "/assets/images/portfolio/full/sanlamreality/13.jpg",
+      "/assets/images/portfolio/full/sanlamreality/mobile/1.jpg",
+      "/assets/images/portfolio/full/sanlamreality/mobile/2.jpg",
+      "/assets/images/portfolio/full/sanlamreality/mobile/3.jpg"
     ]
   },
   {
     "id": 5,
-    "project": "Eeezipay Management Systems",
-    "categories": ["education", "pos", "cms", "api", "ecommerce"],
+    "project": "Eeezipay TouchPOS",
+    "categories": ["education", "pos", "cms", "api", "ecommerce", "desktop"],
     "description": "Integrated SnapScan and Zapper payments through a Node.js microservice, ensuring seamless QR-code rendering and successful payment processing.",
     "technologies": [
       "php",
@@ -277,8 +299,51 @@
     "altTitle": "",
     "url": "https://eezipay.co.za",
     "images": [
-      "/assets/images/portfolio/full/eazipay/1.png",
-      "/assets/images/portfolio/full/eazipay/2.png"
+      "/assets/images/portfolio/full/eazipay/touchPOS/1.png",
+      "/assets/images/portfolio/full/eazipay/touchPOS/3.png",
+      "/assets/images/portfolio/full/eazipay/touchPOS/4.png",
+      "/assets/images/portfolio/full/eazipay/touchPOS/5.png",
+      "/assets/images/portfolio/full/eazipay/touchPOS/6.png",
+      "/assets/images/portfolio/full/eazipay/touchPOS/7.png",
+      "/assets/images/portfolio/full/eazipay/touchPOS/8.png",
+      "/assets/images/portfolio/full/eazipay/touchPOS/9.png"
+    ]
+  },
+  {
+    "id": 25,
+    "project": "Eeezipay Meal Booking",
+    "categories": ["education", "pos", "cms", "api", "ecommerce", "desktop"],
+    "description": "",
+    "technologies": [
+      "php",
+      "laravel",
+      "node",
+      "react",
+      "docker",
+      "java",
+      "js",
+      "html5",
+      "css3",
+      "sass",
+      "npm",
+      "grunt",
+      "gulp",
+      "bootstrap",
+      "database",
+      "jira",
+      "git"
+    ],
+    "imgUrl": "/assets/images/portfolio/full/eazipay/meal-booking/1.png",
+    "date": "",
+    "altTitle": "",
+    "url": "https://eezipay.co.za",
+    "images": [
+      "/assets/images/portfolio/full/eazipay/meal-booking/1.png",
+      "/assets/images/portfolio/full/eazipay/meal-booking/2.png",
+      "/assets/images/portfolio/full/eazipay/meal-booking/3.png",
+      "/assets/images/portfolio/full/eazipay/meal-booking/4.png",
+      "/assets/images/portfolio/full/eazipay/meal-booking/5.png",
+      "/assets/images/portfolio/full/eazipay/meal-booking/6.png"
     ]
   },
   {
@@ -404,7 +469,15 @@
     "date": "",
     "altTitle": "",
     "url": "https://springleap.com",
-    "images": ["/assets/images/portfolio/full/springleap.png"]
+    "images": [
+      "/assets/images/portfolio/full/springleap/1.png",
+      "/assets/images/portfolio/full/springleap/2.png",
+      "/assets/images/portfolio/full/springleap/3.png",
+      "/assets/images/portfolio/full/springleap/4.png",
+      "/assets/images/portfolio/full/springleap/5.png",
+      "/assets/images/portfolio/full/springleap/6.png",
+      "/assets/images/portfolio/full/springleap/7.png"
+    ]
   },
   {
     "id": 10,
@@ -568,6 +641,9 @@
     "date": "",
     "altTitle": "",
     "url": "",
-    "images": ["/assets/images/portfolio/full/theformula/ads24.jpeg"]
+    "images": [
+      "/assets/images/portfolio/full/theformula/ads24.jpeg",
+      "/assets/images/portfolio/full/theformula/ads24-1.jpeg"
+    ]
   }
 ]
