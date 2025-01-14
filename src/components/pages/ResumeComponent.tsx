@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AnimatedProgressBar from "../../components/AnimatedProgressBar";
 import { apiUrl } from "../../config";
+import { ITechnology } from "./resume/ITechnology";
 
 const ResumeComponent = () => {
   const [education, setEducation] = useState<{}[]>([]);
   const [experience, setExperience] = useState<{}[]>([]);
+  const [technologies, setTechnologies] = useState<ITechnology[]>([]);
 
   useEffect(() => {
     try {
@@ -21,6 +23,9 @@ const ResumeComponent = () => {
         const experienceRoleFilter = (e: any) => e.role.includes("Tech");
         setExperience([...empl.values()].filter(experienceRoleFilter));
       });
+      axios
+        .get<ITechnology[]>(`${apiUrl}/data/technologies.json`)
+        .then(({ data }) => setTechnologies(data));
     } catch (error: any) {
       console.error(error);
     }
@@ -80,59 +85,21 @@ const ResumeComponent = () => {
             <div className="block">
               <div className="block-title">
                 <h3>
-                  Design <span>Skills</span>
-                </h3>
-              </div>
-
-              <div className="skills-info">
-                <h4>Web Design</h4>
-                <div className="skill-container">
-                  <AnimatedProgressBar level={90} />
-                </div>
-
-                <h4>Graphic Design</h4>
-                <div className="skill-container">
-                  <AnimatedProgressBar level={50} />
-                </div>
-              </div>
-            </div>
-            <div className="block">
-              <div className="block-title">
-                <h3>
                   Coding <span>Skills</span>
                 </h3>
               </div>
 
               <div className="skills-info">
-                <h4>JAVA</h4>
-                <div className="skill-container">
-                  <AnimatedProgressBar level={90} />
-                </div>
-
-                <h4>Laravel</h4>
-                <div className="skill-container">
-                  <AnimatedProgressBar level={95} />
-                </div>
-
-                <h4>PHP</h4>
-                <div className="skill-container">
-                  <AnimatedProgressBar level={95} />
-                </div>
-
-                <h4>Vanilla JS</h4>
-                <div className="skill-container">
-                  <AnimatedProgressBar level={100} />
-                </div>
-
-                <h4>jQuery</h4>
-                <div className="skill-container">
-                  <AnimatedProgressBar level={80} />
-                </div>
-
-                <h4>Angular 19</h4>
-                <div className="skill-container">
-                  <AnimatedProgressBar level={98} />
-                </div>
+                {technologies.map((skill, index) => (
+                  <span key={index}>
+                    <h4>{skill.tech}</h4>
+                    <div className="skill-container">
+                      <AnimatedProgressBar
+                        level={(skill.competency / 5) * 100}
+                      />
+                    </div>
+                  </span>
+                ))}
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import { appUrl } from "../../config";
 import { ITestimony } from "./ITestimony";
 
 const TestimonialItemComponent = ({ testimony }: { testimony: ITestimony }) => {
@@ -9,14 +10,21 @@ const TestimonialItemComponent = ({ testimony }: { testimony: ITestimony }) => {
       <div className="testimonial-item">
         <div className="testimonial-credits">
           <div className="testimonial-picture">
-            <img decoding="async" src={testimony.imgUrl} alt={testimony.name} />
+            <img
+              decoding="async"
+              src={`${appUrl}/${testimony.imgUrl}`}
+              alt={testimony.name}
+            />
           </div>
           <div className="testimonial-author-info">
             <p className="testimonial-author">{testimony.name}</p>
 
             <p className="testimonial-firm">
-              <a href={testimony.github}>{testimony.company}</a> / 
-              <span className="testimonial-position"> {testimony.position}</span> 
+              <a href={testimony.github}>{testimony.company}</a> /
+              <span className="testimonial-position">
+                {" "}
+                {testimony.position}
+              </span>
             </p>
           </div>
         </div>

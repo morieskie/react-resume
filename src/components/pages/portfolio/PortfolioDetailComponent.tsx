@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import ImagePreloadComponent from "../../../components/ImagePreloadComponent";
+import { appUrl } from "../../../config";
 const PrevSlideButton = () => {
   const swiper = useSwiper();
   return <div className="owl-prev" onClick={() => swiper.slidePrev()}></div>;
@@ -128,7 +129,7 @@ const PortfolioDetailComponent = ({
                           <SwiperSlide key={index}>
                             <div className="item" key={index}>
                               <img
-                                src={img}
+                                src={`${appUrl}/${img}`}
                                 alt={portfolio.altTitle}
                                 style={{ maxHeight: "800px" }}
                               />

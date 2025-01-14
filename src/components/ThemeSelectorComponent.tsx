@@ -8,6 +8,7 @@ import {
   activeThemeSelector,
   themeColorsSelector,
 } from "../store/selectors/themeSelectors";
+import { appUrl } from "../config";
 
 const ThemeSelectorComponent = () => {
   const [panelVisibility, setPanelVisibility] = useState(false);
@@ -24,7 +25,7 @@ const ThemeSelectorComponent = () => {
     (color: string) => {
       const preColor = activeColor;
       const el = document.createElement("link");
-      el.href = `/assets/css/main-${color}.css`;
+      el.href = `${appUrl}/assets/css/main-${color}.css`;
       el.rel = "stylesheet";
       el.type = "text/css";
       el.id = `${color}-theme`;

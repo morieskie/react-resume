@@ -1,18 +1,11 @@
 import { useSelector } from "react-redux";
-import {
-  activeThemeSelector,
-  themeColorClassSelector,
-} from "../store/selectors/themeSelectors";
-import { RootState } from "../store";
+import { themeClassSelector } from "../store/selectors/themeSelectors";
 const SectionComponent = ({
   children,
   sectionTitle,
   classLists: { wrapperBlock, contentBlock },
 }: any) => {
-  const activeTheme = useSelector(activeThemeSelector);
-  const themeColorClass = useSelector((state: RootState) =>
-    themeColorClassSelector(state, activeTheme)
-  );
+  const themeColorClass = useSelector(themeClassSelector);
 
   return (
     <section className="pt-page pt-page-current pt-page-relative">

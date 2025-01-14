@@ -11,7 +11,7 @@ const AnimatedProgressBar = ({
     <motion.div
       initial={{ width: `0%` }}
       animate={{ width: `${level}%` }}
-      className="skill-percentage skill-9"
+      className="skill-percentage"
     ></motion.div>
   );
 };
