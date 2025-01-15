@@ -102,7 +102,7 @@ const PortfolioComponent = () => {
           </ImagePreloadComponent>
         </div>
         {/*  /Portfolio Grid  */}
-        {items.length && (
+        {/* {items.length && (
           <div className="row">
             <div className="center col-lg-12 col-md-12 col-sm-12">
               <a
@@ -115,7 +115,7 @@ const PortfolioComponent = () => {
               </a>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </SectionComponent>
   );

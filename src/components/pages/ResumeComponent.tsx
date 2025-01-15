@@ -90,7 +90,7 @@ const ResumeComponent = () => {
         </div>
 
         {/* <!-- Download Resume Button --> */}
-        <div className="row">
+        {/* <div className="row">
           <div className="col-sm-12 col-md-12 col-lg-12">
             <div className="block">
               <div className="center download-resume">
@@ -100,7 +100,7 @@ const ResumeComponent = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* <!-- End of Download Resume Button --> */}
       </>
     </SectionComponent>
