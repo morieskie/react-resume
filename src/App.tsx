@@ -1,7 +1,11 @@
-import "./App.css";
-import "swiper/css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { AnimatePresence, motion } from "motion/react";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "./App.css";
+import "swiper/css";
 import { useLocation } from "react-router-dom";
 import HomeComponent from "./components/pages/HomeComponent";
 import ResumeComponent from "./components/pages/ResumeComponent";
@@ -9,17 +13,20 @@ import ServiceComponent from "./components/pages/ServiceComponent";
 import PortfolioComponent from "./components/pages/PortfolioComponent";
 import ContactComponent from "./components/pages/ContactComponent";
 import PageLayoutComponent from "./components/PageLayoutComponent";
-import { AnimatePresence, motion } from "motion/react";
 import HeaderComponent from "./components/HeaderComponent";
 import MainContentComponent from "./components/MainContentComponent";
 import DynamicContentComponent from "./components/DynamicContentComponent";
 import ThemeSelectorComponent from "./components/ThemeSelectorComponent";
 import { PageTransitionOptions } from "./utils/PageTransitionOptions";
-import axios from "axios";
-import { setUser } from "./store/slices/userSlice";
+import {
+  setUser,
+  setUserEducation,
+  setUserExperience,
+  setUserTechnologies,
+} from "./store/slices/userSlice";
 import { apiUrl } from "./config";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { IExperience } from "./components/home/IExperience";
+import { ITechnology } from "./components/pages/resume/ITechnology";
 
 const animations = Object.values(PageTransitionOptions.transition);
 
@@ -27,14 +34,27 @@ function App() {
   const location = useLocation();
   const dispatch = useDispatch();
 
-
-const { initial, animate, exit } =
-  animations[Math.floor(Math.random() * animations.length)];
+  const { initial, animate, exit } =
+    animations[Math.floor(Math.random() * animations.length)];
 
   useEffect(() => {
     axios
       .get<any>(`${apiUrl}/data/about.json`)
       .then(({ data }) => dispatch(setUser(data)));
+
+    axios
+      .get<IExperience[]>(`${apiUrl}/data/experience.json`)
+      .then(({ data }) => {
+        dispatch(setUserExperience(data));
+      });
+
+    axios
+      .get<any[]>(`${apiUrl}/data/education.json`)
+      .then(({ data }) => dispatch(setUserEducation(data)));
+
+    axios
+      .get<ITechnology[]>(`${apiUrl}/data/technologies.json`)
+      .then(({ data }) => dispatch(setUserTechnologies(data)));
   }, [dispatch]);
 
   return (
