@@ -13,7 +13,7 @@ const SectionComponent = ({
         <div className={`page-header ${themeColorClass}`}>
           <h2 className="section-title">{sectionTitle}</h2>
         </div>
-        <div className={`page-content ${contentBlock}`}>{children}</div>
+        <div className={`page-content ${contentBlock ?? ""}`}>{children}</div>
       </div>
     </section>
   );

@@ -1,3 +1,5 @@
+import { IExperience } from "./IExperience";
+
 export interface IMe {
   name: {
     firstName: string;
@@ -16,4 +18,5 @@ export interface IMe {
     };
     url: string;
   }[];
+  expertience: IExperience[]
 }

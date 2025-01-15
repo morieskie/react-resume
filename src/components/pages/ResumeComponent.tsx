@@ -1,42 +1,26 @@
 import SectionComponent from "../../components/SectionContent";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import AnimatedProgressBar from "../../components/AnimatedProgressBar";
-import { apiUrl } from "../../config";
-import { ITechnology } from "./resume/ITechnology";
+import { useSelector } from "react-redux";
+import {
+  userEducationSelector,
+  userExperienceByFilterSelector,
+  userTechnologySelector,
+} from "../../store/selectors/userSelectors";
+import { RootState } from "../../store";
 
 const ResumeComponent = () => {
-  const [education, setEducation] = useState<{}[]>([]);
-  const [experience, setExperience] = useState<{}[]>([]);
-  const [technologies, setTechnologies] = useState<ITechnology[]>([]);
-
-  useEffect(() => {
-    try {
-      axios
-        .get<any[]>(`${apiUrl}/data/education.json`)
-        .then(({ data }) => setEducation(data));
-      axios.get<any[]>(`${apiUrl}/data/experience.json`).then(({ data }) => {
-        const empl = new Set<{}>(data);
-        // const experienceFilter = (e: any) =>
-        //   // new Date(e.from).getFullYear() = 2022 ||
-        //   new Date(e.to).getFullYear() >= 2021;
-        const experienceRoleFilter = (e: any) => e.role.includes("Tech");
-        setExperience([...empl.values()].filter(experienceRoleFilter));
-      });
-      axios
-        .get<ITechnology[]>(`${apiUrl}/data/technologies.json`)
-        .then(({ data }) => setTechnologies(data));
-    } catch (error: any) {
-      console.error(error);
-    }
-  }, []);
+  const education = useSelector(userEducationSelector);
+  const experience = useSelector((s: RootState) =>
+    userExperienceByFilterSelector(s, "", 2018, 2022)
+  );
+  const technologies = useSelector(userTechnologySelector);
 
   return (
     <SectionComponent
       sectionTitle="Resume"
       classLists={{
         wrapperBlock: "custom-page-content",
-        headerBlock: "color-1",
+        headerBlock: "",
       }}
     >
       <>

@@ -1,7 +1,11 @@
 import { useSelector } from "react-redux";
-import { userSelector } from "../../store/selectors/userSelectors";
+import {
+  userRolesSelector,
+  userSelector,
+} from "../../store/selectors/userSelectors";
 import ReactHtmlParser from "react-html-parser";
 import { themeClassSelector } from "../../store/selectors/themeSelectors";
+import TextAlternateComponent from "../TextAlternateComponent";
 
 const HomeComponent = () => {
   const {
@@ -9,6 +13,7 @@ const HomeComponent = () => {
     socialLinks,
     bio,
   } = useSelector(userSelector);
+  const roles = useSelector(userRolesSelector);
   const image = require("./../../assets/images/morieskie-274x.png");
   const themeColorClass = useSelector(themeClassSelector);
 
@@ -29,15 +34,13 @@ const HomeComponent = () => {
                   {firstName} {lastName}
                 </h1>
                 <div className="owl-carousel text-rotation">
-                  <div className="item d-none">
-                    <div className="sp-subtitle">Frontend-developer</div>
-                  </div>
-                  <div className="item d-none">
-                    <div className="sp-subtitle"> Good Guy </div>
-                  </div>
-
-                  <div className="item d-none">
-                    <div className="sp-subtitle">Full Stack Developer</div>
+                  <div className="item">
+                    <div
+                      className="sp-subtitle"
+                      style={{ height: "20px", overflow: "auto" }}
+                    >
+                      <TextAlternateComponent content={roles} />
+                    </div>
                   </div>
                 </div>
               </div>
