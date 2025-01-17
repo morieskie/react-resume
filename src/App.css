@@ -2,17 +2,13 @@
 @import "./assets/css/normalize.css";
 @import "./assets/css/animate.css";
 @import "./assets/css/transition-animations.css";
-@import "./assets/css/main.css";
 @import "./assets/css/customizations.css";
+@import "./assets/css/main.css";
 
 /* .subpages {
   overflow: visible;
   position: relative;
 } */
-
-.pt-page .section-inner {
-  border-radius: 0;
-}
 
 .page-portfolio-loaded {
   position: fixed;
