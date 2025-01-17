@@ -6,9 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { BrowserRouter } from "react-router-dom";
-import { enableMapSet } from 'immer';
-
-const root = ReactDOM.createRoot(document.querySelector("body") as HTMLElement);
+import { enableMapSet } from "immer";
+const body = document.querySelector("body") as HTMLElement;
+body.classList.add("material-template");
+const root = ReactDOM.createRoot(body);
 
 root.render(
   <React.StrictMode>

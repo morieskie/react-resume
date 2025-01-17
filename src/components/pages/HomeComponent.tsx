@@ -4,27 +4,38 @@ import {
   userSelector,
 } from "../../store/selectors/userSelectors";
 import ReactHtmlParser from "react-html-parser";
-import { themeClassSelector } from "../../store/selectors/themeSelectors";
 import TextAlternateComponent from "../TextAlternateComponent";
+import { appUrl } from "../../config";
+import { trimLeft } from "../../utils/common";
 
 const HomeComponent = () => {
   const {
     name: { firstName, lastName },
     socialLinks,
     bio,
+    imageSrc,
   } = useSelector(userSelector);
   const roles = useSelector(userRolesSelector);
-  const image = require("./../../assets/images/morieskie-274x.png");
-  const themeColorClass = useSelector(themeClassSelector);
+
+  const getImageUrl = (): string => {
+    return imageSrc.includes("://")
+      ? imageSrc
+      : `${appUrl}/${trimLeft(imageSrc, "/")}`;
+  };
 
   return (
     <section className="pt-page pt-page-current pt-page-relative">
       <div className={`section-inner start-page-content `}>
-        <div className={`page-header ${themeColorClass}`}>
+        <div className={`page-header`}>
           <div className="row">
             <div className="col-sm-4 col-md-4 col-lg-4">
               <div className="photo">
-                <img src={image} alt={firstName} />
+                <img
+                  src={getImageUrl()}
+                  alt={firstName}
+                  width={274}
+                  height={274}
+                />
               </div>
             </div>
 
@@ -53,7 +64,12 @@ const HomeComponent = () => {
                     title={media.firm}
                     key={`${media.firm + index}`}
                   >
-                    <i className={media.icon.className}></i>
+                    <i
+                      className={`fa fa-${media.firm
+                        .split(" ")
+                        .join("-")
+                        .toLowerCase()}`}
+                    ></i>
                   </a>
                 ))}
               </div>
