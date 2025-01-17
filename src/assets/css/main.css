@@ -39,7 +39,7 @@
 @import url('material-design-iconic-font.min.css'); /* Full icons list: http://zavoloklom.github.io/material-design-iconic-font/cheatsheet.htmls */
 
 /* Google fonts */
-@import url("//fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,700,700i|Montserrat:300,400,500,600,700");
+@import url("http://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,400i,700,700i|Montserrat:300,400,500,600,700");
 
 
 /* =============================================================================
@@ -505,7 +505,7 @@ body > footer .copyrights {
   position: relative;
   background-color: #fff;
   overflow: hidden;
-  border-radius: 15px;
+  border-radius: 8px;
   -webkit-box-shadow: 0px 15px 25px 0px rgba(0,0,0,0.1);
   -moz-box-shadow: 0px 15px 25px 0px rgba(0,0,0,0.1);
   box-shadow: 0px 15px 25px 0px rgba(0,0,0,0.1);
@@ -1474,7 +1474,7 @@ body > footer .copyrights {
 }
 
 .portfolio-grid figure a,
-.portfolio-grid figure a img {
+.portfolio-rid figure a img {
   display: block;
   position: relative;
 }
@@ -2095,7 +2095,7 @@ body > footer .copyrights {
 
 .tags li {
   display: inline-block;
-  margin: 2px 0;
+  margin: 2px;
 }
 
 .tags li a, .tags li span {
