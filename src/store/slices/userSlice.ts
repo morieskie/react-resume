@@ -13,6 +13,7 @@ export const userSlice = createSlice({
       lastName: "User",
     },
     bio: "",
+    imageSrc:"",
     mobileNumber: "",
     email: "",
     address: "",
